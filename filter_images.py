@@ -1,24 +1,6 @@
 import os
 import shutil
 
-
-def create_filtered_folder(folder_name, contents_list):
-    try:
-        if not os.path.exists(folder_name):
-            os.mkdir(folder_name)
-
-        for index, content in enumerate(contents_list, 1):
-            file_name = f"{folder_name}/file{index}.jpg"
-            with open(file_name, 'w') as file:
-                file.write(content)
-
-        print(f'Folder {folder_name} created with contents successfully.')
-    except Exception as e:
-        print(f'An error has occurred: {e}')
-
-def filtered_contents_list(xml_path_list):
-    return xml_path_list
-
 def copy_selected_contents(source_folder, destination_folder, selected_contents):
     try:
         if not os.path.exists(destination_folder):
@@ -47,30 +29,35 @@ def copy_selected_contents(source_folder, destination_folder, selected_contents)
     except Exception as e:
         print(f"An error occurred: {e}")
 
-
-
-
-
-
 if __name__ == '__main__':
     xml_list = os.listdir('xml_path')
     xml_list_filename = []
+    print(xml_list)
+    print('length of the xml_list is: ', len(xml_list))
 
     for i in xml_list:
         xml_list_filename.append(xml_list[i].split('.')[0])
 
+    print(xml_list_filename)
+    print('length of the xml_list_filename is: ', len(xml_list_filename))
+
     jpg_list = os.listdir('jpg_path')
     jpg_list_filename = []
+    print(jpg_list)
+    print('length of the jpg_list is: ', len(jpg_list))
 
-    for i in jpg_list:
+    for i in range (0, len(jpg_list)):
         jpg_list_filename.append(jpg_list[i].split('.')[0])
 
     updated_jpg_list = []
 
-    for i in xml_list_filename:
+    for i in range (0, len(xml_list_filename)):
         for j in jpg_list_filename:
             if jpg_list_filename[j] == xml_list_filename[i]:
                 updated_jpg_list.append(jpg_list_filename[j])
+
+    print(updated_jpg_list)
+    print('length of the updated_jpg_list is: ', len(updated_jpg_list))
 
     
     copy_selected_contents('source path', 'destination path', updated_jpg_list)
