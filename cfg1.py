@@ -25,7 +25,7 @@ GPU_ID = '0'
 TRAIN_BATCH_SIZE = 2
 VAL_BATCH_SIZE = 1
 learning_rate = 1.25e-4
-NUM_EPOCHS = 800           # RVCO需要训练时间久一点。 150
+NUM_EPOCHS = 100           # RVCO需要训练时间久一点。 150
 
 # predict
 RET_IMG = 'img_ret'        # 可视化结果保存的位置
