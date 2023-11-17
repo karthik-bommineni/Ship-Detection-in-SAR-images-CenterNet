@@ -29,7 +29,7 @@ use_gpu = torch.cuda.is_available()
 
 if cfg1.NET == 'ResNet':
     model = ResNet(34)
-    #model.init_weights(pretrained=True)
+    model.init_weights(pretrained=True)
 else:
     model = DlaNet(34)
 print('cuda', torch.cuda.current_device(), torch.cuda.device_count())
