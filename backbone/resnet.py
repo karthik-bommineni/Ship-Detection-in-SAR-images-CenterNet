@@ -194,6 +194,10 @@ class Creat_ResNet(nn.Module):
             pretrained_dict = resnet34.state_dict()
             """加载torchvision中的预训练模型和参数后通过state_dict()方法提取参数
                也可以直接从官方model_zoo下载：
+               
+               After loading the pre-trained model and parameters in torchvision, extract parameters through the state_dict() method
+               You can also download it directly from the official model_zoo: 
+               
                pretrained_dict = model_zoo.load_url(model_urls['resnet152'])"""
             model_dict = self.state_dict()
             # 将pretrained_dict里不属于model_dict的键剔除掉
@@ -202,7 +206,8 @@ class Creat_ResNet(nn.Module):
             model_dict.update(pretrained_dict)
             # 加载我们真正需要的state_dict
             self.load_state_dict(model_dict)
-            print('成功加载预训练权重')
+            # print('成功加载预训练权重')
+            print('Successfully loaded pre-trained weights')
         else:
             pass
 
