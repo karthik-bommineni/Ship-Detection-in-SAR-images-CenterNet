@@ -18,6 +18,7 @@ BatchNorm = nn.BatchNorm2d
 
 def get_model_url(data='imagenet', name='dla34', hash='ba72cf86'):
     return join('http://dl.yf.io/dla/models', data, '{}-{}.pth'.format(name, hash))
+    # return join('file path') #update here
 
 
 def conv3x3(in_planes, out_planes, stride=1):
@@ -305,6 +306,8 @@ class DLA(nn.Module):
     def load_pretrained_model(self,  data='imagenet', name='dla34', hash='ba72cf86'):
         fc = self.fc
         if name.endswith('.pth'):
+            # Loading the local file
+            model_path = os.path.join('weights', name) # update here
             model_weights = torch.load(data + name)
         else:
             model_url = get_model_url(data, name, hash)
