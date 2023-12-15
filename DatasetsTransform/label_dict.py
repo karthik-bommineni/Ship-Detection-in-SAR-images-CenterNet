@@ -102,6 +102,11 @@ class LabelMap(object):
                 'back_ground': 0,
                 'ship': 1
             }
+        elif self.cfgs.DATASET_NAME.startswith('OSSDD'):
+            name_label_map = {
+                'back_ground': 0,
+                'ship': 1
+            }
         elif self.cfgs.DATASET_NAME.startswith('SKU110K-R'):
             name_label_map = {
                 'back_ground': 0,
