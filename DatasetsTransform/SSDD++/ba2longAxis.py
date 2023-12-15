@@ -307,7 +307,7 @@ if __name__ == '__main__':
 
     for i,x in enumerate(src_xmls):
         x_path = os.path.join(src_xml_path, x)
-        print('正在转换:',x_path)
+        print('Coverting:',x_path)
         img_height, img_width, gtbox_label = read_xml_gtbox_and_label(x_path)
         print(img_height, img_width, gtbox_label)
         w
