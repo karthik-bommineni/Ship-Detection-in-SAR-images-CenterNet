@@ -6,6 +6,8 @@ Convolutional neural network model based on the architecture of the DLAnet-34 an
 
 </div align="justify">
 
+<div align="justify">
+
 ## Properties of Official-SSDD
 * The dataset contains three types of bounding box annotations
     * Bounding box SSDD (BBox-SSDD)
@@ -20,4 +22,6 @@ Convolutional neural network model based on the architecture of the DLAnet-34 an
 * Dataset images have mixed HH, HV, VV, and VH polarizations.
 * Paper Link: https://www.mdpi.com/2072-4292/13/18/3690
 * Dataset Link: https://drive.google.com/file/d/1Oe99oueVRvFpZsUBRKsA5GgNrnRGxzKk/view?usp=sharing
+
+</div align="justify">
 
