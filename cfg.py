@@ -1,15 +1,18 @@
 # model.py
-CHECKPOINT = True              # True断点保存
+# CHECKPOINT = True              # True断点保存
+CHECKPOINT = False    
 NET = 'DlaNet'                  # DlaNet
 NUM_CLASSES = 20                 # @
-LAYER = 34
+LAYER = 152
 
 # dataset.py
-DATASET_NAME = 'RVOC2007'        # @
+# DATASET_NAME = 'RVOC2007'        # @
+DATASET_NAME = 'OSSDD' 
 IMG_EXT = 'jpg'
 # HRSC 和 UCAS-AOD的均值和方差
 #MEAN = [0.5194416012442385, 0.5378052387430711,0.533462090585746]     # @
 #STD = [0.3001546018824507, 0.28620901391179554, 0.3014112676161966]   # @
+
 # RVOC2007的均值和方差
 MEAN = [0.471, 0.448, 0.408]
 STD = [0.234, 0.239, 0.242]

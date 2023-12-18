@@ -7,6 +7,7 @@ Created on Sun Jan  5 14:06:48 2020
 import torch.nn as nn
 import torchvision
 import cfg
+from torch.utils import model_zoo
 
 
 def conv3x3(in_planes, out_planes, stride=1):
@@ -197,8 +198,10 @@ class Creat_ResNet(nn.Module):
                
                After loading the pre-trained model and parameters in torchvision, extract parameters through the state_dict() method
                You can also download it directly from the official model_zoo: 
-               
-               pretrained_dict = model_zoo.load_url(model_urls['resnet152'])"""
+               """
+            # resnet152 = torchvision.models.resnet152(pretrained=True)   
+            # # pretrained_dict = model_zoo.load_url(model_urls['resnet152'])
+            # pretrained_dict = resnet152.state_dict()
             model_dict = self.state_dict()
             # 将pretrained_dict里不属于model_dict的键剔除掉
             pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}

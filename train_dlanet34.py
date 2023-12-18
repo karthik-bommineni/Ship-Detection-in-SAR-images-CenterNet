@@ -127,17 +127,18 @@ for epoch in range(cur_epochs, num_epochs):
         validation_loss += loss.item()
     validation_loss /= len(test_loader)
 
-    # 权重保存路径
-    best_path = './checkpoint/' + cfg1.DATASET_NAME + '_dlanet34' + cfg1.Loss
+    # 权重保存路径 Weight saving path
+    best_path = '/kaggle/working/checkpoint/' + cfg1.DATASET_NAME + '_dlanet34' + cfg1.Loss
     mkdir(best_path)
-    last_path = './checkpoint/' + cfg1.DATASET_NAME + '_dlanet34' + cfg1.Loss
+    last_path = '/kaggle/working/checkpoint/' + cfg1.DATASET_NAME + '_dlanet34' + cfg1.Loss
     mkdir(last_path)
 
     # 保存权重
+    # Save weights
     cpt = {
-        'net': model.state_dict(),            # 保存模型
-        'optimizer': optimizer.state_dict(),  # 保存优化器
-        'epoch': epoch,                       # 保存训练轮数
+        'net': model.state_dict(),            # 保存模型 Save model
+        'optimizer': optimizer.state_dict(),  # 保存优化器 Save optimizer
+        'epoch': epoch,                       # 保存训练轮数 Save training rounds
         'learning_rate': learning_rate,
         'best_test_loss': best_test_loss
     }

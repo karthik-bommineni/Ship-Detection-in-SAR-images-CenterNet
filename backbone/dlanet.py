@@ -17,6 +17,7 @@ import cfg
 BatchNorm = nn.BatchNorm2d
 
 def get_model_url(data='imagenet', name='dla34', hash='ba72cf86'):
+    # print('Downloading the files')
     return join('http://dl.yf.io/dla/models', data, '{}-{}.pth'.format(name, hash))
     # return join('file path') #update here
 
@@ -307,7 +308,7 @@ class DLA(nn.Module):
         fc = self.fc
         if name.endswith('.pth'):
             # Loading the local file
-            model_path = os.path.join('weights', name) # update here
+            #model_path = os.path.join('weights', name) # update here
             model_weights = torch.load(data + name)
         else:
             model_url = get_model_url(data, name, hash)

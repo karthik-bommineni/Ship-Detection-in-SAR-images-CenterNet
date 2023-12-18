@@ -14,7 +14,7 @@ import torch.utils.data as data
 import pycocotools.coco as coco
 from PIL import Image, ImageDraw
 import matplotlib.pyplot as plt
-import cfg
+import cfg2
 
 def draw(img, boxes, width =3, mode = 'xyxya'):
     '''
@@ -67,12 +67,12 @@ def random_vertical_flip(img, bboxes, p=0.5):
     return img, bboxes
 
 class ctDataset(data.Dataset):
-    num_classes = cfg.NUM_CLASSES
+    num_classes = cfg2.NUM_CLASSES
     default_resolution = [512,512]
-    mean = np.array(cfg.MEAN, dtype=np.float32).reshape(1,1,3)
-    std = np.array(cfg.STD, dtype= np.float32).reshape(1,1,3)
+    mean = np.array(cfg2.MEAN, dtype=np.float32).reshape(1,1,3)
+    std = np.array(cfg2.STD, dtype= np.float32).reshape(1,1,3)
     def __init__(self, data_dir='data', split='train'):
-        self.data_dir = os.path.join(data_dir, cfg.DATASET_NAME)
+        self.data_dir = os.path.join(data_dir, cfg2.DATASET_NAME)
         self.img_dir = os.path.join(self.data_dir, 'images')
         try:
             if split == 'train':
@@ -84,7 +84,7 @@ class ctDataset(data.Dataset):
 
         self.max_objs = 128
         self.class_name = ['obj']
-        self._valid_ids = list(range(1, cfg.NUM_CLASSES+1, 1) ) #[1]              # @ ?????????
+        self._valid_ids = list(range(1, cfg2.NUM_CLASSES+1, 1) ) #[1]              # @ ?????????
         self.cat_ids = {v: i for i, v in enumerate(self._valid_ids)}
         #print(self.cat_ids)
         self.voc_color = [(v // 32 * 64 + 64, (v // 8) % 4 * 64, v % 8 * 32) for v in range(1, self.num_classes + 1)]
@@ -107,7 +107,7 @@ class ctDataset(data.Dataset):
     def __getitem__(self, index):
         img_id = self.images[index]
         file_name = self.coco.loadImgs(ids=[img_id])[0]['file_name']
-        img_path = os.path.join(self.img_dir, file_name.split('.')[0] + '.' + cfg.IMG_EXT)
+        img_path = os.path.join(self.img_dir, file_name.split('.')[0] + '.' + cfg2.IMG_EXT)
         ann_ids = self.coco.getAnnIds(imgIds=[img_id])
         anns = self.coco.loadAnns(ids=ann_ids) 
         num_objs = min(len(anns), self.max_objs)

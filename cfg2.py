@@ -4,7 +4,7 @@ CHECKPOINT = False
 NET = 'ResNet'                  # Resnet
 #NUM_CLASSES = 20                 # @
 NUM_CLASSES = 1
-LAYER = 34
+LAYER = 152
 
 # dataset.py
 #DATASET_NAME = 'RVOC2007'        # @
@@ -27,7 +27,7 @@ GPU_ID = '0'
 TRAIN_BATCH_SIZE = 2
 VAL_BATCH_SIZE = 1
 learning_rate = 1.25e-4
-NUM_EPOCHS = 800           # RVCO需要训练时间久一点。 150
+NUM_EPOCHS = 100           # RVCO需要训练时间久一点。 150
 
 # predict
 RET_IMG = 'img_ret'        # 可视化结果保存的位置
