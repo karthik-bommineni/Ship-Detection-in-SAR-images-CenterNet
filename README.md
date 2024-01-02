@@ -22,3 +22,7 @@ Convolutional neural network model based on the architecture of the DLAnet-34 an
 * Dataset Link: https://drive.google.com/file/d/1Oe99oueVRvFpZsUBRKsA5GgNrnRGxzKk/view?usp=sharing
 
 
+## Requirements
+
+    torch == 1.13.0                         torchvision==0.14.0                      python == 3.9.13     
+    cv2 == 4.6.0                             
