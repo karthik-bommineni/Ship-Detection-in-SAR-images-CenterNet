@@ -25,4 +25,4 @@ Convolutional neural network model based on the architecture of the DLAnet-34 an
 ## Requirements
 
     torch == 1.13.0                         torchvision==0.14.0                      python == 3.9.13     
-    cv2 == 4.6.0                             
+    cv2 == 4.6.0                            pytorch-cuda==11.7
