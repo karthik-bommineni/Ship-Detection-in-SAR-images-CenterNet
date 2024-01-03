@@ -1,0 +1,31 @@
+<annotation>
+	<folder>JPEGImages</folder>
+	<filename>000244.jpg</filename>
+	<path>JPEGImages</path>
+	<size>
+		<width>500</width>
+		<height>320</height>
+		<depth>3</depth>
+	</size>
+	<object>
+		<name>ship</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<rotated_bndbox>
+			<rotated_bbox_cx>102</rotated_bbox_cx>
+			<rotated_bbox_cy>61</rotated_bbox_cy>
+			<rotated_bbox_w>18</rotated_bbox_w>
+			<rotated_bbox_h>83</rotated_bbox_h>
+			<rotated_bbox_theta>59.036251068115234</rotated_bbox_theta>
+			<x1>62</x1>
+			<y1>74</y1>
+			<x2>133</x2>
+			<y2>31</y2>
+			<x3>143</x3>
+			<y3>47</y3>
+			<x4>71</x4>
+			<y4>90</y4>
+		</rotated_bndbox>
+	</object>
+</annotation>

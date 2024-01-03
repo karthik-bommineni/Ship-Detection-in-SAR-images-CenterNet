@@ -60,7 +60,7 @@ class PascalVOC2coco(object):
                         self.filen_ame = p.split('>')[1].split('<')[0]
                         f_name = 0
                         # self.path = os.path.join(path, 'SegmentationObject', self.filen_ame.split('.')[0] + '.png')
-                        self.path = os.path.join(path, 'SegmentationObject', self.filen_ame.split('.')[0] + '.jpg')
+                        self.path = os.path.join(path, 'images', self.filen_ame.split('.')[0] + '.jpg')
                     if 'width' in p:
                         self.width = int(p.split('>')[1].split('<')[0])
                     if 'height' in p:
@@ -203,9 +203,9 @@ class PascalVOC2coco(object):
         json.dump(self.data_coco, open(self.save_json_path, 'w'), indent=4)  # indent=4 更加美观显示
  
  
-xml_file = glob.glob('C:\\Users\\karth\\OneDrive\\Desktop\\CenterNet\\Ship-Detection-in-SAR-images\\data\\OSSDD\\annotations_train_xml\\*.xml')
+xml_file = glob.glob('C:\\Users\\karth\\OneDrive\\Desktop\\Rotate-CenterNet\\Ship-Detection-in-SAR-images-CenterNet\\data\\OSSDD\\annotations_val_xml_new\\*.xml')
 # xml_file = glob.glob('./Annotations/*.xml')
 # xml_file=['./Annotations/000032.xml']
 #xml_file=['00000007_05499_d_0000037.xml']
 # PascalVOC2coco(xml_file, 'train.json')
-PascalVOC2coco(xml_file, 'train.json')
+PascalVOC2coco(xml_file, 'val.json')

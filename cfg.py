@@ -1,7 +1,7 @@
 # model.py
 # CHECKPOINT = True              # True断点保存
 CHECKPOINT = False    
-NET = 'DlaNet'                  # DlaNet
+NET = 'ResNet'                  # DlaNet
 NUM_CLASSES = 20                 # @
 LAYER = 152
 
@@ -18,7 +18,8 @@ MEAN = [0.471, 0.448, 0.408]
 STD = [0.234, 0.239, 0.242]
 
 # loss.py: smooth
-Loss = 'l1'           # OR 'gwd'
+# Loss = 'l1'           # OR 'gwd'
+Loss = 'gwd'
 # train
 GPU_ID = '1'
 TRAIN_BATCH_SIZE = 2

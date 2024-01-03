@@ -105,8 +105,8 @@ def draw_ellipse(filename, res, line_width=3):
     img.save(os.path.join(img_save_path, os.path.split(filename)[-1]))
 
 
-def draw(filename, result, line_width=3):
-    img = Image.open(filename)
+def draw(filename, result, img_abs_path, line_width=3):
+    img = Image.open(img_abs_path + '\\' + filename)
     w, h = img.size
     draw_obj = ImageDraw.Draw(img)
     for class_name, lx, ly, rx, ry, ang, prob in res:
@@ -172,7 +172,7 @@ def draw(filename, result, line_width=3):
     plt.imshow(img)
     plt.show()
 
-    img_save_path = cfg.RET_IMG + '/' + cfg.DATASET_NAME + '_' + cfg.Loss
+    img_save_path = cfg.RET_IMG + '/' + cfg.DATASET_NAME + '_dlanet34' + cfg.Loss
     mkdir(img_save_path)
     img.save(os.path.join(img_save_path, os.path.split(filename)[-1]))
 
@@ -446,7 +446,7 @@ if __name__ == '__main__':
 
     import cfg
 
-    os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+    os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
     if cfg.NET == 'ResNet':
         model = ResNet(34)
@@ -456,21 +456,30 @@ if __name__ == '__main__':
 
     device = torch.device('cuda')
     best_path = './checkpoint/' + cfg.DATASET_NAME + '_' + cfg.Loss
+    best_path = 'C:\\Users\\karth\\OneDrive\\Desktop\\checkpoints-20231218T130949Z-001\\checkpoints\\resnet_short'
 
-    model.load_state_dict(torch.load(best_path + '/' + 'last.pth')['net'])
+    model.load_state_dict(torch.load(best_path + '\\' + 'last.pth')['net'])
     model.eval()
     model.cuda()
 
-    # 读取测试集的图像的list
+    # Read the list of images from the test set
     dataset_img_path = '/home/wujian/RCenterNet/data/' + cfg.DATASET_NAME + '/images/'
-    test_txt = '/home/wujian/RCenterNet/data/' + cfg.DATASET_NAME + '/ImageSets/' + 'test.txt'
-    imgsets = read_img(test_txt)
-    # 此处测试图像的路径视情况需要改变。
+    # test_txt = '/home/wujian/RCenterNet/data/' + cfg.DATASET_NAME + '/ImageSets/' + 'test.txt'
+    # imgsets = read_img(test_txt)
+    # The path of the test image here may be changed as needed
+
+    imgsets = os.listdir('C:\\Users\\karth\\OneDrive\\Desktop\\Official-SSDD-OPEN\\Official-SSDD-OPEN\\RBox_SSDD\\voc_style\\JPEGImages_test')
+    img_abs_path = 'C:\\Users\\karth\\OneDrive\\Desktop\\Official-SSDD-OPEN\\Official-SSDD-OPEN\\RBox_SSDD\\voc_style\\JPEGImages_test'
+    # print(imgsets)
+
     for image_name in imgsets:
         if image_name.split('.')[-1] == cfg.IMG_EXT:
+            # print(image_name)
             # if image_name.split('/')[-1] == '100000957.bmp':
-            image = cv2.imread(image_name)
+            image = cv2.imread(img_abs_path + '\\' + image_name)
             img_h, img_w, _ = image.shape
+            print(image)
+            # input('enter')
             images, meta = pre_process(image)
             images = images.to(device)
             output, dets, forward_time = process(images,
@@ -503,5 +512,4 @@ if __name__ == '__main__':
                     dets.append(res[i])
                 #res = res[ele for ele in keep]                      # 保留去掉NMS的res
 
-            draw_ellipse(image_name, dets)  # 画旋转椭圆框
-
+            draw(image_name, dets, img_abs_path)  # 画旋转椭圆框

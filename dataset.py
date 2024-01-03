@@ -76,9 +76,9 @@ class ctDataset(data.Dataset):
         self.img_dir = os.path.join(self.data_dir, 'images')
         try:
             if split == 'train':
-                self.annot_path = os.path.join(self.data_dir, 'annotations', 'train.json')
+                self.annot_path = os.path.join(self.data_dir, 'annotations_long', 'train.json')
             elif split == 'val':
-                self.annot_path = os.path.join(self.data_dir, 'annotations', 'val.json')
+                self.annot_path = os.path.join(self.data_dir, 'annotations_long', 'val.json')
         except:
             print('No any data!')
 
