@@ -169,10 +169,10 @@ def draw(filename, result, img_abs_path, line_width=3):
         # draw.line([(x2n, y2n),(x3n, y3n)],fill= (0,0,255),width=5)
         # draw.line([(x0n, y0n), (x3n, y3n)],fill=(255,0,0),width=5)
 
-    plt.imshow(img)
-    plt.show()
+    # plt.imshow(img)
+    # plt.show()
 
-    img_save_path = cfg.RET_IMG + '/' + cfg.DATASET_NAME + '_dlanet34' + cfg.Loss
+    img_save_path = cfg.RET_IMG + '/' + cfg.DATASET_NAME + '_resnet34' + cfg.Loss
     mkdir(img_save_path)
     img.save(os.path.join(img_save_path, os.path.split(filename)[-1]))
 
@@ -455,8 +455,8 @@ if __name__ == '__main__':
         model = DlaNet(34)
 
     device = torch.device('cuda')
-    best_path = './checkpoint/' + cfg.DATASET_NAME + '_' + cfg.Loss
-    best_path = 'C:\\Users\\karth\\OneDrive\\Desktop\\checkpoints-20231218T130949Z-001\\checkpoints\\resnet_short'
+    best_path = './checkpoint/' + cfg.DATASET_NAME + '_resnet34' + cfg.Loss
+    # best_path = 'C:\\Users\\karth\\OneDrive\\Desktop\\checkpoints-20231218T130949Z-001\\checkpoints\\resnet_short'
 
     model.load_state_dict(torch.load(best_path + '\\' + 'last.pth')['net'])
     model.eval()

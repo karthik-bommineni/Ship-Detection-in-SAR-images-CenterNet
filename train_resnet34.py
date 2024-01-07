@@ -8,6 +8,7 @@ import os
 import sys
 import torch
 import numpy as np
+import pandas as pd
 from Loss import CtdetLoss
 from Gwd_loss import CtdetGWDLoss                 # 是否加gwd_loss
 from torch.utils.data import DataLoader
@@ -18,6 +19,11 @@ from resnet import ResNet
 #from resnet_dcn import ResNet
 from dlanet import DlaNet
 #from dlanet_dcn import DlaNet
+
+result_csv_file = '%s/mAP_resnet.csv'%os.getcwd()
+df = pd.DataFrame()
+d = dict()
+
 
 
 def mkdir(path):
@@ -148,4 +154,7 @@ for epoch in range(cur_epochs, num_epochs):
         #torch.save(model.state_dict(), best_path +  '/' + 'best.pth')
         torch.save(cpt, best_path +  '/' + 'best.pth')
     #torch.save(model.state_dict(),last_path + '/' + 'last.pth')
+    d.update({'epoch':epoch, 'Best test loss': best_test_loss, 'Validation loss':validation_loss})
+    df = pd.concat([df, pd.DataFrame([d])], ignore_index=True)
+    df.to_csv(result_csv_file, sep=',', index=False)
     torch.save(cpt, last_path + '/' + 'last.pth')
